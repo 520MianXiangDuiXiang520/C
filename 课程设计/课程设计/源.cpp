@@ -16,7 +16,7 @@
 
 /*成员信息结构体定义*/
 
-struct info 
+struct info
 {
 	//个人信息
 	char name[20];
@@ -29,7 +29,7 @@ struct info
 	char spouse_name[20];//配偶姓名
 	char parent_name[20];//双亲姓名
 };
-struct person 
+struct person
 {
 	info record;    //族谱个人节点
 	person *child;  //指向长子
@@ -68,7 +68,7 @@ int Top = 10;   /*定义画树时上下间距*/
 int SuoJin = 1;   /*定义每次缩进的倍数*/
 
 /************************************************************************************
-                                         创建
+										 创建
 *************************************************************************************/
 
 person *create_family(FILE *fp)
@@ -122,12 +122,12 @@ void imctree(person * tree, int x, int y)
 }
 
 /************************************************************************************
-                                   初始化图像界面
+								   初始化图像界面
 **************************************************************************************/
 
 void initImg()
 {
-	
+
 	IMAGE imgbk;
 	loadimage(&imgbk, _T("E:/vs2019/数据结构课设/10.jpg"), 1280, 660);
 	putimage(0, 0, &imgbk);//显示图片
@@ -141,14 +141,14 @@ void initImg()
 }
 
 /*************************************************************************************
-                                   绘制按钮
+								   绘制按钮
 **************************************************************************************/
 
 void DrawButtle()
 {
 	LOGFONT f;
-	gettextstyle(&f);                   
-	f.lfHeight = 35; 
+	gettextstyle(&f);
+	f.lfHeight = 35;
 	settextcolor(BLACK);
 	int left = Frame + Spacing / 2;
 	int top = height - 200 + Buttom;
@@ -157,25 +157,25 @@ void DrawButtle()
 	char s1[15] = "插入";
 	char s2[15] = "退出";
 	char s3[15] = "查看";
-	char *s[] = { s0,s1,s2,s3};
+	char *s[] = { s0,s1,s2,s3 };
 	for (i = 0; i < buttleNum; i++)
 	{
 		fillrectangle(left, top, left + buttleWidth, top + buttleHeight);
 		outtextxy(left + 85, top + 6, s[i]);
-		left = left + buttleWidth + Spacing;		
+		left = left + buttleWidth + Spacing;
 	}
 }
 
 /**************************************************************************************
-                                  绘制查询菜单
+								  绘制查询菜单
 ***************************************************************************************/
 
 void queryMenu()
 {
 	int i;
 	int menuLeft = Frame + Spacing / 2;   /*定义菜单按钮初始化位置*/
-	int MenuTop = height - 2*Frame + Buttom + buttleHeight + 20;   /*菜单初始化高度*/
-	
+	int MenuTop = height - 2 * Frame + Buttom + buttleHeight + 20;   /*菜单初始化高度*/
+
 	for (i = 0; i < MenuNum; i++)
 	{
 		fillrectangle(menuLeft, MenuTop, menuLeft + MenuWidth, MenuTop + MenuHeight);
@@ -205,20 +205,20 @@ info addinfo(info * newPeople)
 	{
 		ifaddDataBirth = InputBox(addData_birth, 20, "", "请输入出生日期", "查询", 300);
 		sscanf(addData_birth, "%s", newPeople->date_birth);   /*获取用户输入的字符串*/
-	}	
+	}
 	if (ifaddDataBirth)
 	{
-		ifaddPlaceBirth= InputBox(addPlace_birth, 20, "", "请输入出生地", "查询", 300);
+		ifaddPlaceBirth = InputBox(addPlace_birth, 20, "", "请输入出生地", "查询", 300);
 		sscanf(addPlace_birth, "%s", newPeople->place_birth);   /*获取用户输入的字符串*/
 	}
 	if (ifaddPlaceBirth)
 	{
-		ifaddSex= InputBox(addSex, 20, "", "请输入性别", "查询", 300);
+		ifaddSex = InputBox(addSex, 20, "", "请输入性别", "查询", 300);
 		sscanf(addSex, "%d", newPeople->sex);   /*获取用户输入的字符串*/
 	}
 	if (ifaddSex)
 	{
-		ifaddProfession= InputBox(addProfession, 20, "", "请输入职业", "查询", 300);
+		ifaddProfession = InputBox(addProfession, 20, "", "请输入职业", "查询", 300);
 		sscanf(addProfession, "%s", newPeople->profession);   /*获取用户输入的字符串*/
 	}
 	if (ifaddProfession)
@@ -233,13 +233,13 @@ info addinfo(info * newPeople)
 	}
 	if (ifaddparent)
 	{
-		
+
 		LOGFONT f;
-		gettextstyle(&f);                     
-		f.lfHeight =35; 
+		gettextstyle(&f);
+		f.lfHeight = 35;
 		settextcolor(BLACK);
 		setbkmode(TRANSPARENT);
-		_tcscpy_s(f.lfFaceName, _T("黑体"));    
+		_tcscpy_s(f.lfFaceName, _T("黑体"));
 		settextstyle(&f);
 		char add[] = "新成员信息录入成功\n欢迎新成员加入！！";
 		RECT r = { Frame + 15, 75,width - 135,  height - 215 };
@@ -249,7 +249,7 @@ info addinfo(info * newPeople)
 }
 
 /****************************************************************************************
-                                    绘制关系菜单
+									绘制关系菜单
 *****************************************************************************************/
 
 void relationshipMenu()
@@ -257,7 +257,7 @@ void relationshipMenu()
 	int g;
 	LOGFONT f;
 	gettextstyle(&f);                     // 获取当前字体设置
-	f.lfHeight = 25; 
+	f.lfHeight = 25;
 	settextcolor(BLACK);
 	setbkmode(TRANSPARENT);
 	_tcscpy_s(f.lfFaceName, _T("黑体"));    // 设置字体为“黑体”
@@ -267,30 +267,30 @@ void relationshipMenu()
 	char r2[15] = "查找兄弟";
 	char r3[15] = "查找孩子";
 	char r4[15] = "查找后代";
-	char *p[] = { r0,r1,r2 ,r3,r4};
+	char *p[] = { r0,r1,r2 ,r3,r4 };
 	int relaMenuLeft = Frame + (width - 2 * Frame) / 3;   /*定义关系菜单左侧坐标*/
 	int relaMenuRight = relaMenuLeft + relationMenuWidth;   /*定义关系菜单右侧左边*/
 	int relaMenuTop = 63;   /*定义第一个关系按钮顶部坐标*/
 	int relaMenuButton = relaMenuTop + relationMenuHeight;   /*定义关系按钮底部坐标*/
-	for ( g = 0; g < relationMenuNum; g++)
+	for (g = 0; g < relationMenuNum; g++)
 	{
 		setfillcolor(RGB(72, 81, 81));
 		fillrectangle(relaMenuLeft, relaMenuTop, relaMenuRight, relaMenuButton);
-		outtextxy(relaMenuLeft+120, relaMenuTop + 26, p[g]);
+		outtextxy(relaMenuLeft + 120, relaMenuTop + 26, p[g]);
 		//setfillcolor(RGB(255, 255, 255));
-		relaMenuTop = relaMenuTop + relationMenuHeight+3;
+		relaMenuTop = relaMenuTop + relationMenuHeight + 3;
 		relaMenuButton = relaMenuTop + relationMenuHeight;
 	}
-	setfillcolor(RGB(255,255,255 ));
+	setfillcolor(RGB(255, 255, 255));
 }
 
 
 
 /****************************************************************************************
-                                       鼠标事件
+									   鼠标事件
 ******************************************************************************************/
 
-char * GetMouse(char out[500] )
+char * GetMouse(char out[500])
 {
 	person * t;
 	char file[20] = "02.txt";
@@ -330,7 +330,7 @@ char * GetMouse(char out[500] )
 			else if ((x > (Frame + Spacing / 2) + buttleWidth + Spacing) && (x < (Frame + Spacing / 2) + 2 * buttleWidth + Spacing) && mklButton)
 			{
 				fillrectangle(Frame, 60, width - 100, height - 2 * Frame);   /*清空输出区域*/
-				info *newone= (info*)malloc(sizeof(info));
+				info *newone = (info*)malloc(sizeof(info));
 				newone = &addinfo(newpeople);   /*newonw就是要插入的节点信息*/
 				FlushMouseMsgBuffer();   /*清空鼠标缓存区*/
 				/****************************************
@@ -349,19 +349,19 @@ char * GetMouse(char out[500] )
 			else if ((x > (Frame + Spacing / 2) + 3 * buttleWidth + Spacing) && (x < (Frame + Spacing / 2) + 3 * (buttleWidth + Spacing) + buttleWidth) && mklButton)
 			{
 				LOGFONT f;
-				gettextstyle(&f);                    
+				gettextstyle(&f);
 				f.lfHeight = 15;
 				settextcolor(BLUE);
 				setbkmode(TRANSPARENT);
-				_tcscpy_s(f.lfFaceName, _T("黑体"));   
+				_tcscpy_s(f.lfFaceName, _T("黑体"));
 				settextstyle(&f);
-				setfillcolor(RGB(0,0,0));
-				fillrectangle(0, 60, width, height - 2 * Frame);   
+				setfillcolor(RGB(0, 0, 0));
+				fillrectangle(0, 60, width, height - 2 * Frame);
 				MouseTreeNum++;
 				setlinecolor(BLUE);
 				if (MouseTreeNum % 2 != 0)
 				{
-					imctree(t, 640, 60+10+5);
+					imctree(t, 640, 60 + 10 + 5);
 					setfillcolor(RGB(255, 255, 255));
 				}
 				else
@@ -403,7 +403,7 @@ char * GetMouse(char out[500] )
 				/*根据姓名查找*/
 				if (x > (Frame + Spacing / 2) && x < (Frame + Spacing / 2 + MenuWidth) && mklButton)
 				{
-					ifgetName=InputBox(name, 20, "", "请输入你要查询的姓名", "查询", 300);   /*用于以对话框形式获取用户输入*/
+					ifgetName = InputBox(name, 20, "", "请输入你要查询的姓名", "查询", 300);   /*用于以对话框形式获取用户输入*/
 					sscanf(name, "%s", getInfo);   /*获取用户输入的字符串*/
 					/****************************************
 					*                                       *
@@ -413,7 +413,7 @@ char * GetMouse(char out[500] )
 					*****************************************/
 					RECT r = { Frame + 15, 75,width - 135,  height - 215 };
 					//drawtext(name, &r, DT_CENTER | DT_VCENTER);   /*drawtext中的参数name是查找出结果后返回的字符串*/
-					FlushMouseMsgBuffer();   /*清空鼠标缓存区*/					
+					FlushMouseMsgBuffer();   /*清空鼠标缓存区*/
 				}
 				/*根据出生年月查找*/
 				else if (x > (Frame + Spacing / 2) + MenuWidth + MenuSpacing && x < (Frame + Spacing / 2) + 2 * MenuWidth + MenuSpacing && mklButton)
@@ -429,9 +429,9 @@ char * GetMouse(char out[500] )
 					fillrectangle(Frame, 60, width - 100, height - 2 * Frame);   /*清空输出区域*/
 					RECT r = { Frame + 15, 75,width - 135,  height - 215 };
 					drawtext(year, &r, DT_CENTER | DT_VCENTER);    /*drawtext中的参数name是查找出结果后返回的字符串*/
-					FlushMouseMsgBuffer();   /*清空鼠标缓存区*/	
+					FlushMouseMsgBuffer();   /*清空鼠标缓存区*/
 				}
-				
+
 			}
 		}
 		if (ifgetName)   /* 如果输入要查询的姓名后单击确定，则输出关系菜单供选择*/
@@ -446,7 +446,7 @@ char * GetMouse(char out[500] )
 				int x1, y1;
 				bool mklButton1;
 				bool ifgetGener;
-				x1 = mousemsg1.x;   /*获取鼠标当前x坐标*/ 
+				x1 = mousemsg1.x;   /*获取鼠标当前x坐标*/
 				y1 = mousemsg1.y;   /*获取鼠标当前y坐标*/
 				mklButton1 = mousemsg1.mkLButton;   /*获取鼠标当前左键是否按下*/
 				if (x1 > Frame + (width - 2 * Frame) / 3 && x1 < Frame + width - 2 * Frame / 3 + relationMenuWidth)   /*判断鼠标是否在关系菜单的宽度区间*/
@@ -491,14 +491,14 @@ char * GetMouse(char out[500] )
 						break;
 					}
 				}
-			}    	
+			}
 		}
 	}
 	return getInfo;
 }
 
 /************************************************************************************
-                                       title
+									   title
 *************************************************************************************/
 
 void title()
@@ -506,12 +506,12 @@ void title()
 	LOGFONT f;
 	gettextstyle(&f);                     // 获取当前字体设置
 	f.lfHeight = 35; // 设置字体高度为 12
-	settextcolor(RGB(72,81,81));
+	settextcolor(RGB(72, 81, 81));
 	setbkmode(TRANSPARENT);
 	_tcscpy_s(f.lfFaceName, _T("黑体"));    // 设置字体为“黑体”
 	settextstyle(&f);
 	char s[] = "家庭族谱查询";
-	outtextxy(15,15, s);
+	outtextxy(15, 15, s);
 }
 
 int main()
@@ -522,7 +522,7 @@ int main()
 	initImg();
 	title();
 	DrawButtle();
-	info[100]=GetMouse(out);   /*info数组为输入内容*/
+	info[100] = GetMouse(out);   /*info数组为输入内容*/
 	_getch();              // 按任意键继续
 	closegraph();           // 关闭绘图窗口
 }

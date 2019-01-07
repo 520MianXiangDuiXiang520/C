@@ -1,0 +1,10 @@
+﻿GoergeJoestar 18440101	UK	1	noble	Meili	None
+JonathanJoestar 18680404	UK	1	noble	Alina	GoergeJostar+Meili
+JosephJoestar 19200927	USA	1	businessman	sijiq	Jonathan+Alina
+Herli 1944	USA	0	Unknown	Kujo	Joseph+sijiq
+KujoJotaro 1970	JPN	1	Doctor	Unknown	Herli
+# # HigashikataJosuke 1983	JPN	1	Student	None	Joseph+pengzi
+# # # DioBrando 1867	UK	1	Vampire	Unknown	DarleoBrando
+GiornoGiovanna 19850416	Italy	1	Gangster	Unknown	Dio
+# Unglo 1988	Unknown	1	Unknown	Unknown	Dio
+# # # # # # 
